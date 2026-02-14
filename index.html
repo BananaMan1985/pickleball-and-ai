@@ -346,6 +346,100 @@
       font-weight: 300;
     }
 
+    /* ===== PRICING TIERS ===== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--gold);
+      background: rgba(201, 168, 76, 0.04);
+      transform: scale(1.02);
+    }
+    .pricing-card.featured::before {
+      content: 'Best Value';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #0a0a0a;
+      padding: 4px 16px;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .pricing-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+    }
+    .pricing-card.featured:hover {
+      transform: scale(1.02) translateY(-4px);
+    }
+    .pricing-tier {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+    .pricing-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+    .pricing-amount .currency {
+      font-size: 1.5rem;
+      vertical-align: super;
+    }
+    .pricing-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+    .pricing-features li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      margin-right: 12px;
+    }
+
     /* ===== SCHEDULE SECTION ===== */
     .schedule-list {
       margin-top: 48px;
@@ -502,6 +596,45 @@
       line-height: 1.7;
     }
 
+    /* ===== HOSTS SECTION ===== */
+    .hosts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .host-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px;
+      transition: all 0.3s ease;
+    }
+    .host-card:hover {
+      border-color: var(--border-strong);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+    }
+    .host-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .host-title {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .host-bio {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
     /* ===== FOOTER ===== */
     footer {
       padding: 48px 0;
@@ -651,10 +784,39 @@
           <div class="detail-value">Full Day</div>
           <div class="detail-sub">Morning play, afternoon sessions</div>
         </div>
-        <div class="detail-item">
-          <div class="detail-label">Cost</div>
-          <div class="detail-value">Complimentary</div>
-          <div class="detail-sub">By application only</div>
+      </div>
+      
+      <div style="margin-top: 64px; text-align: center;">
+        <div class="section-label">Investment</div>
+        <h3 class="section-title" style="font-size: 2rem; margin-bottom: 12px;">Pricing</h3>
+        <p class="section-desc" style="margin: 0 auto 0;">Limited to 15 attendees. Secure your spot today.</p>
+        
+        <div class="pricing-grid fade-in">
+          <div class="pricing-card featured">
+            <div class="pricing-tier">Member Rate</div>
+            <div class="pricing-amount"><span class="currency">$</span>1,000</div>
+            <div class="pricing-desc">For Sagan or Crane members</div>
+            <ul class="pricing-features">
+              <li>Full day access</li>
+              <li>Tournament entry</li>
+              <li>Catered meals</li>
+              <li>AI roundtables</li>
+              <li>Networking sessions</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-card">
+            <div class="pricing-tier">Standard Rate</div>
+            <div class="pricing-amount"><span class="currency">$</span>5,000</div>
+            <div class="pricing-desc">For non-members</div>
+            <ul class="pricing-features">
+              <li>Full day access</li>
+              <li>Tournament entry</li>
+              <li>Catered meals</li>
+              <li>AI roundtables</li>
+              <li>Networking sessions</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -707,6 +869,36 @@
             <h4>Happy Hour</h4>
             <p>Drinks, awards, and open conversation</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- HOSTS -->
+  <section id="hosts">
+    <div class="container">
+      <div class="section-label">Your Hosts</div>
+      <h2 class="section-title">Meet Your Hosts</h2>
+      <p class="section-desc">
+        Two operators building real businesses with AI. No theory — just practical experience from the trenches.
+      </p>
+      <div class="hosts-grid fade-in">
+        <div class="host-card">
+          <h3 class="host-name">Jon Matzner</h3>
+          <div class="host-title">Founder & CEO, Sagan | Host, Lazy Leverage Podcast</div>
+          <p class="host-bio">
+            Jon runs Sagan, a talent recruitment company connecting businesses with remote professionals from Latin America. He's ruthlessly pragmatic about AI — teaching business owners to actually build with tools like Replit, Lovable, Supabase, Claude, and Cursor. Not a theorist. A practitioner who runs his own company on these tools daily.
+          </p>
+        </div>
+        
+        <div class="host-card">
+          <h3 class="host-name">Peter Lohmann</h3>
+          <div class="host-title">Co-founder, Crane Community</div>
+          <p class="host-bio">
+            Peter co-founded Crane, a network for small business owners focused on growth, operations, and leveraging technology. An experienced entrepreneur and community builder, he brings together business owners who want to level up — not just talk about it, but actually do the work.
+          </p>
         </div>
       </div>
     </div>
