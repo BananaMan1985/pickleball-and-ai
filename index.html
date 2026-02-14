@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pickleball &amp; AI — Where Innovation Meets the Court</title>
+  <meta name="description" content="An exclusive event blending the fastest-growing sport with cutting-edge AI. Apply now to join founders, operators, and builders for a day of competition, connection, and conversation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0a;
+      color: #e8e4dc;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== CUSTOM PROPERTIES ===== */
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e4c76b;
+      --gold-dark: #a88a3a;
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-card: #161616;
+      --bg-card-hover: #1a1a1a;
+      --text-primary: #e8e4dc;
+      --text-secondary: #9a958c;
+      --text-muted: #6b6660;
+      --border: rgba(201, 168, 76, 0.15);
+      --border-strong: rgba(201, 168, 76, 0.3);
+      --glow: rgba(201, 168, 76, 0.08);
+      --max-width: 1100px;
+    }
+
+    /* ===== BACKGROUND TEXTURE ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(201,168,76,0.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--text-secondary); font-weight: 400; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: #0a0a0a;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      background: var(--gold);
+      color: #0a0a0a;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .hero-cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+    }
+    .hero-cta svg { width: 16px; height: 16px; }
+    .hero-meta {
+      margin-top: 48px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      text-align: center;
+    }
+    .hero-meta-item .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-meta-item .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 4px;
+    }
+
+    /* ===== SECTION STYLES ===== */
+    section {
+      padding: 100px 0;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px;
+      transition: all 0.3s ease;
+    }
+    .about-card:hover {
+      border-color: var(--border-strong);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+    }
+    .about-card .icon {
+      width: 48px; height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+    .about-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ===== DETAILS SECTION ===== */
+    .details-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      margin-top: 48px;
+    }
+    .detail-item {
+      position: relative;
+      padding-left: 20px;
+    }
+    .detail-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 4px;
+      width: 3px; height: 40px;
+      background: linear-gradient(180deg, var(--gold), transparent);
+      border-radius: 2px;
+    }
+    .detail-item .detail-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+    .detail-item .detail-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .detail-item .detail-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* ===== SCHEDULE SECTION ===== */
+    .schedule-list {
+      margin-top: 48px;
+      max-width: 700px;
+    }
+    .schedule-item {
+      display: flex;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .schedule-item:last-child { border-bottom: none; }
+    .schedule-time {
+      min-width: 100px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .schedule-content h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .schedule-content p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* ===== APPLICATION FORM ===== */
+    .apply-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+    }
+    .form-wrapper {
+      max-width: 640px;
+      margin: 48px auto 0;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .form-group label .required {
+      color: var(--gold);
+      margin-left: 2px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+    }
+    .form-group select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239a958c' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    .form-group select option {
+      background: #1a1a1a;
+      color: var(--text-primary);
+    }
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-submit {
+      width: 100%;
+      padding: 16px 40px;
+      background: var(--gold);
+      color: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+    .form-submit:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+    }
+    .form-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .form-success.show { display: block; }
+    .form-success h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .form-success p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 48px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav .container { height: 60px; }
+      .nav-logo { font-size: 1.1rem; }
+      .nav-cta { padding: 8px 16px; font-size: 0.75rem; }
+      .hero { padding: 100px 20px 60px; }
+      .hero-meta { gap: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+      .schedule-item { flex-direction: column; gap: 8px; }
+      .schedule-time { min-width: auto; }
+      section { padding: 72px 0; }
+      .details-grid { gap: 28px; }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== HIDDEN IFRAME ===== */
+    .hidden-iframe {
+      display: none;
+      width: 0;
+      height: 0;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden iframe for Jotform submission -->
+  <iframe name="jotform_submit" class="hidden-iframe" aria-hidden="true"></iframe>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container">
+      <div class="nav-logo">Pickleball <span>&amp;</span> AI</div>
+      <a href="#apply" class="nav-cta">Apply Now</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Exclusive Event</div>
+      <h1>Where <em>Innovation</em><br>Meets the Court</h1>
+      <p class="hero-sub">
+        An invite-only gathering for founders, operators, and builders at the intersection of sport and technology. One day. Big ideas. Great competition.
+      </p>
+      <a href="#apply" class="hero-cta">
+        Apply to Attend
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
+        </svg>
+      </a>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="value">Spring 2026</span>
+          <span class="label">Date</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="value">San Francisco</span>
+          <span class="label">Location</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="value">50 Guests</span>
+          <span class="label">Capacity</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label">The Concept</div>
+      <h2 class="section-title">More Than a Game.<br>More Than a Conference.</h2>
+      <p class="section-desc">
+        Pickleball &amp; AI brings together the energy of competition with the depth of real conversation. No keynotes. No panels. Just the right people, the right setting, and the right questions.
+      </p>
+      <div class="about-grid fade-in">
+        <div class="about-card">
+          <div class="icon">&#127955;</div>
+          <h3>Competitive Play</h3>
+          <p>Round-robin pickleball tournament with skill-based brackets. All levels welcome — from first-timers to seasoned players. Equipment provided.</p>
+        </div>
+        <div class="about-card">
+          <div class="icon">&#129302;</div>
+          <h3>AI Deep Dives</h3>
+          <p>Intimate, curated conversations about what's actually working in AI. Real use cases, real challenges, real builders sharing what they've learned.</p>
+        </div>
+        <div class="about-card">
+          <div class="icon">&#129309;</div>
+          <h3>Genuine Connection</h3>
+          <p>Designed for serendipity. Small group size means you'll actually get to know people — not just exchange business cards and move on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EVENT DETAILS -->
+  <section class="details-section" id="details">
+    <div class="container">
+      <div class="section-label">Event Details</div>
+      <h2 class="section-title">The Essentials</h2>
+      <div class="details-grid fade-in">
+        <div class="detail-item">
+          <div class="detail-label">When</div>
+          <div class="detail-value">Spring 2026</div>
+          <div class="detail-sub">Exact date shared upon acceptance</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Where</div>
+          <div class="detail-value">San Francisco, CA</div>
+          <div class="detail-sub">Venue details sent to attendees</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Format</div>
+          <div class="detail-value">Full Day</div>
+          <div class="detail-sub">Morning play, afternoon sessions</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Cost</div>
+          <div class="detail-value">Complimentary</div>
+          <div class="detail-sub">By application only</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule">
+    <div class="container">
+      <div class="section-label">The Day</div>
+      <h2 class="section-title">How It Unfolds</h2>
+      <div class="schedule-list fade-in">
+        <div class="schedule-item">
+          <div class="schedule-time">9:00 AM</div>
+          <div class="schedule-content">
+            <h4>Arrival &amp; Welcome</h4>
+            <p>Coffee, introductions, and court assignments</p>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">9:30 AM</div>
+          <div class="schedule-content">
+            <h4>Pickleball Tournament</h4>
+            <p>Round-robin play across skill levels</p>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">12:00 PM</div>
+          <div class="schedule-content">
+            <h4>Lunch &amp; Networking</h4>
+            <p>Catered lunch with curated seating</p>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">1:30 PM</div>
+          <div class="schedule-content">
+            <h4>AI Roundtables</h4>
+            <p>Small-group discussions on real AI challenges and opportunities</p>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">3:30 PM</div>
+          <div class="schedule-content">
+            <h4>Championship Bracket &amp; Demos</h4>
+            <p>Final matches and lightning demos from attendees</p>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">5:00 PM</div>
+          <div class="schedule-content">
+            <h4>Happy Hour</h4>
+            <p>Drinks, awards, and open conversation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- APPLICATION FORM -->
+  <section class="apply-section" id="apply">
+    <div class="container">
+      <div style="text-align: center;">
+        <div class="section-label">Apply</div>
+        <h2 class="section-title">Request Your Spot</h2>
+        <p class="section-desc" style="margin: 0 auto;">
+          Space is limited to 50 guests. Tell us a bit about yourself and what you're building. We review every application personally.
+        </p>
+      </div>
+      <div class="form-wrapper">
+        <form id="applicationForm" action="https://submit.jotform.com/submit/260445552588061" method="POST" target="jotform_submit">
+          <input type="hidden" name="formID" value="260445552588061">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name <span class="required">*</span></label>
+              <input type="text" name="q2_q2_fullname0[first]" id="field_fullname" placeholder="Your full name" required>
+              <input type="hidden" name="q2_q2_fullname0[last]" value=" ">
+            </div>
+            <div class="form-group">
+              <label>Email <span class="required">*</span></label>
+              <input type="email" name="q3_q3_email1" placeholder="you@company.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Company Name <span class="required">*</span></label>
+              <input type="text" name="q4_q4_textbox2" placeholder="Your company" required>
+            </div>
+            <div class="form-group">
+              <label>Membership <span class="required">*</span></label>
+              <select name="q5_q5_dropdown3" required>
+                <option value="" disabled selected>Select one...</option>
+                <option value="Yes - Sagan member">Yes — Sagan member</option>
+                <option value="Yes - Crane member">Yes — Crane member</option>
+                <option value="No - neither">No — neither</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Why do you want to attend? <span class="required">*</span></label>
+            <textarea name="q6_q6_textarea4" placeholder="What draws you to this event?" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>What are you hoping to build or solve with AI? <span class="required">*</span></label>
+            <textarea name="q7_q7_textarea5" placeholder="Tell us about your AI interests, projects, or challenges..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn">Submit Application</button>
+          <p class="form-note">Applications are reviewed on a rolling basis. You'll hear back within 5 business days.</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <h3>Application Received</h3>
+          <p>Thank you for your interest in Pickleball &amp; AI. We'll review your application and get back to you within 5 business days. Keep an eye on your inbox.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">Pickleball &amp; AI</div>
+      <p>&copy; 2026 Pickleball &amp; AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Form submission handler
+    document.getElementById('applicationForm').addEventListener('submit', function(e) {
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+
+      // The form submits to Jotform via the hidden iframe (target="jotform_submit")
+      // Show success message after a short delay
+      setTimeout(function() {
+        document.getElementById('applicationForm').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('show');
+      }, 1500);
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
